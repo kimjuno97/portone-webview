@@ -1,4 +1,13 @@
 window.onload = function () {
+  const params = new URLSearchParams(window.location.search);
+  const storeId = params.get("storeId");
+  const channelKey = params.get("channelKey");
+  const paymentId = params.get("paymentId");
+  const orderName = params.get("orderName");
+  const totalAmount = params.get("totalAmount");
+  const currency = params.get("currency");
+  const payMethod = params.get("payMethod");
+
   const script = document.createElement("script");
 
   // 스크립트 소스 설정
@@ -7,6 +16,18 @@ window.onload = function () {
   script.onload = () => {
     // 스크립트 로드 완료 시 Flutter에 알림
     window.successLoad.postMessage("successLoad");
+
+    setTimeout(() => {
+      requestPortOnePayment({
+        storeId,
+        channelKey,
+        paymentId,
+        orderName,
+        totalAmount,
+        currency,
+        payMethod,
+      });
+    }, 1000);
   };
   document.head.appendChild(script);
 };
@@ -21,7 +42,6 @@ async function requestPortOnePayment(paymentData) {
       totalAmount: paymentData.totalAmount,
       currency: paymentData.currency,
       payMethod: paymentData.payMethod,
-      customData: paymentData.customData,
       redirectUrl: "https://kimjuno97.github.io/portone-webview/",
     });
 

@@ -22,7 +22,7 @@ async function requestPortOnePayment(paymentData) {
       currency: paymentData.currency,
       payMethod: paymentData.payMethod,
       customData: paymentData.customData,
-      // redirectUrl: paymentData.redirectUrl,
+      redirectUrl: window.href.baseURI,
     });
 
     // 결제 성공 시 Flutter에 결과 전송

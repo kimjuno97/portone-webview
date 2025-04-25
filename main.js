@@ -22,7 +22,7 @@ async function requestPortOnePayment(paymentData) {
       currency: paymentData.currency,
       payMethod: paymentData.payMethod,
       customData: paymentData.customData,
-      redirectUrl: window.href.baseURI,
+      redirectUrl: "https://kimjuno97.github.io/portone-webview/",
     });
 
     // 결제 성공 시 Flutter에 결과 전송

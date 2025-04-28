@@ -47,6 +47,8 @@ async function requestPortOnePayment(paymentData) {
     });
   } catch (error) {
     // 에러 발생 시 Flutter에 전송
-    window.paymentError.postMessage(error.message);
+    window.paymentError.postMessage(
+      `${error.message} \n paymentData: ${paymentData}`
+    );
   }
 }

@@ -43,7 +43,7 @@ async function requestPortOnePayment(paymentData) {
       totalAmount: paymentData.totalAmount,
       currency: paymentData.currency,
       payMethod: paymentData.payMethod,
-      redirectUrl: "https://kimjuno97.github.io/portone-webview/#/redirect",
+      redirectUrl: "https://kimjuno97.github.io/portone-webview/redirect",
     });
   } catch (error) {
     // 에러 발생 시 Flutter에 전송

@@ -34,7 +34,8 @@ window.onload = function () {
 
 async function requestPortOnePayment(paymentData) {
   try {
-    const result = await PortOne.requestPayment({
+    /// redirect 방식 사용시 return값 없음.
+    await PortOne.requestPayment({
       storeId: paymentData.storeId,
       channelKey: paymentData.channelKey,
       paymentId: paymentData.paymentId,
@@ -42,16 +43,8 @@ async function requestPortOnePayment(paymentData) {
       totalAmount: paymentData.totalAmount,
       currency: paymentData.currency,
       payMethod: paymentData.payMethod,
-      redirectUrl: "https://kimjuno97.github.io/portone-webview/",
+      redirectUrl: "https://kimjuno97.github.io/portone-webview/#/success",
     });
-
-    // 결제 성공 시 Flutter에 결과 전송
-    window.paymentResult.postMessage(
-      JSON.stringify({
-        paymentId: result.paymentId,
-        txId: result.txId,
-      })
-    );
   } catch (error) {
     // 에러 발생 시 Flutter에 전송
     window.paymentError.postMessage(error.message);
